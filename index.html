@@ -33,6 +33,7 @@
       top: 0;
       z-index: 10;
       position: relative;
+      flex-direction: row;
       justify-content: flex-start;
     }
 
@@ -45,6 +46,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      margin-left: 0;
     }
 
     .navbar .menu-toggle {
@@ -68,6 +70,12 @@
       display: flex;
       gap: 18px;
       align-items: center;
+      position: static;
+      width: auto;
+      flex-direction: row;
+      background: none;
+      box-shadow: none;
+      border: none;
     }
 
     .navbar button {
@@ -177,7 +185,8 @@
         padding: 0 8px;
         height: auto;
         min-height: 56px;
-        justify-content: flex-start;
+        justify-content: flex-end;
+        flex-direction: row-reverse;
       }
 
       .navbar .brand {
@@ -185,23 +194,20 @@
         padding: 12px 0;
         gap: 8px;
         flex: 0 0 auto;
+        margin-left: 12px;
       }
 
       .navbar .menu-toggle {
         display: block;
         position: static;
         margin-left: 0;
-        margin-right: 12px;
-        right: auto;
-        left: auto;
-        top: auto;
-        transform: none;
+        margin-right: 0;
       }
 
       .navbar .nav-links {
         position: absolute;
+        left: 8px;
         top: 64px;
-        right: 8px;
         width: 180px;
         flex-direction: column;
         align-items: stretch;
@@ -251,8 +257,8 @@
 
 <body>
   <div class="navbar">
-    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">&#9776;</button>
     <div class="brand">Vintagram Photobooth</div>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">&#9776;</button>
     <div class="nav-links">
       <button onclick="showSection('home')" class="active">Home</button>
       <button onclick="showSection('about')">About</button>
@@ -343,9 +349,9 @@
       <div class="card">
         <p><b>QuickTake Photobooth</b><br>
           📍 Church Street, Bangalore, Karnataka – 560001<br>
-          📞 <a href="tel:+919080879223">+91 90808 79223</a><br>
-          📧 <a href="mailto:enquiry@photobooths.in">enquiry@photobooths.in</a><br>
-          🌐 <a href="https://www.photobooths.in" target="_blank">www.photobooths.in</a></p>
+          📞 <a href="tel:+919842707915">+91 98427 07915</a><br>
+          📧 <a href="mailto:vintagramofficial@outlook.com">vintagramofficial@outlook.com</a><br>
+          🌐 <a href="https://vintagram.in/" target="_blank">www.vintagram.in</a></p>
       </div>
     </div>
   </div>
