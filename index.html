@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vintagram</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #222;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      height: 64px;
+      box-shadow: 0 2px 8px rgba(44, 44, 44, 0.04);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar .brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #2563eb;
+      letter-spacing: -1px;
+      flex: 1 1 auto;
+    }
+
+    .navbar .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.7rem;
+      color: #2563eb;
+      cursor: pointer;
+      margin-left: auto;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .navbar button {
+      background: none;
+      border: none;
+      color: #222;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .navbar button.active,
+    .navbar button:hover {
+      background: #e2e8f0;
+      color: #2563eb;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+      padding: 0 24px;
+    }
+
+    .title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+      text-align: left;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #64748b;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 2px 16px 0 rgba(44, 44, 44, 0.06);
+      padding: 28px 24px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid #e5e7eb;
+      transition: box-shadow 0.2s, border 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 32px 0 rgba(44, 44, 44, 0.10);
+      border: 1px solid #2563eb;
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      color: #2563eb;
+      margin: 0 0 8px 0;
+      font-weight: 600;
+    }
+
+    .card ul,
+    .card p {
+      color: #374151;
+      font-size: 1rem;
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .card ul {
+      list-style: disc inside;
+      margin-bottom: 0;
+    }
+
+    .card li {
+      margin-bottom: 6px;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+      word-break: break-word;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #1e40af;
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-wrap: wrap;
+        padding: 0 8px;
+        height: auto;
+        min-height: 56px;
+      }
+
+      .navbar .brand {
+        font-size: 1.1rem;
+        padding: 12px 0;
+      }
+
+      .navbar .menu-toggle {
+        display: block;
+      }
+
+      .navbar .nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        display: none;
+        border-top: 1px solid #e5e7eb;
+        background: #fff;
+      }
+
+      .navbar .nav-links.open {
+        display: flex;
+      }
+
+      .navbar button {
+        text-align: left;
+        width: 100%;
+        border-radius: 0;
+        padding: 14px 10px;
+        border-bottom: 1px solid #f1f5f9;
+        font-size: 1rem;
+      }
+
+      .navbar button:last-child {
+        border-bottom: none;
+      }
+
+      .container {
+        padding: 0 8px;
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .grid {
+        gap: 18px;
+      }
+
+      .card {
+        padding: 18px 10px 14px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="brand">Vintagram Photobooth</div>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">&#9776;</button>
+    <div class="nav-links">
+      <button onclick="showSection('home')" class="active">Home</button>
+      <button onclick="showSection('about')">About</button>
+      <button onclick="showSection('services')">Services</button>
+      <button onclick="showSection('contact')">Contact</button>
+    </div>
+  </div>
+  <div class="container">
+    <div id="home-section">
+      <div class="title">Vintagram Photobooth</div>
+      <div class="subtitle"><span style="font-weight:600;color:#2563eb;letter-spacing:1px;font-size:1.25em;">Snap.
+          Print. Share. <span
+            style="background:linear-gradient(90deg,#2563eb,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Repeat.</span></span><br>
+        Vintagrm brings a modern, touch-free photo booth experience with sharp prints and instant digital memories —
+        made for today, enjoyed forever.</div>
+      <div class="grid">
+        <div class="card">
+          <h2>On-spot Prints</h2>
+          <ul>
+            <li>Instant strip prints in seconds</li>
+            <li>Custom templates and layouts</li>
+            <li>Free QR softcopy for every session</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Modern Experience</h2>
+          <ul>
+            <li>UPI-based digital payment</li>
+            <li>Vintage and modern camera options</li>
+            <li>Located in Pune</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="about-section" style="display:none;">
+      <div class="title">About Us</div>
+      <div class="card">
+        <p><b>Vintagram Photobooth</b> is a Pune-based interactive photo experience crafted by tech and design
+          enthusiasts. Blending minimal aesthetics with high-end hardware, we use the Logitech Brio MX camera and
+          custom-built software to deliver crisp, studio-quality photos in seconds. It’s a seamless,
+          designed for today’s generation — where instant prints meet digital sharing in a stylish setup.
+
+        </p>
+      </div>
+    </div>
+    <div id="services-section" style="display:none;">
+      <div class="title">Our Services</div>
+      <div class="grid">
+        <div class="card">
+          <h2>Pricing</h2>
+          <ul>
+            <li>2 Strips – ₹199</li>
+            <li>4 Strips – ₹349</li>
+            <li>6 Strips – ₹499</li>
+            <li>Prices are displayed before session starts</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Policies</h2>
+          <ul>
+            <li>Cancellations accepted before photo prints</li>
+            <li>No refunds after the photo session is completed</li>
+            <li>Contact us within 24 hours for disputes</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Terms & Privacy</h2>
+          <ul>
+            <li>Use the photobooth legally and respectfully</li>
+            <li>We do not store payment details</li>
+            <li>Data is never shared or sold to third parties</li>
+            <li>Contact us to access or delete your data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="contact-section" style="display:none;">
+      <div class="title">Contact Us</div>
+      <div class="card">
+        <p><b>QuickTake Photobooth</b><br>
+          📍 Church Street, Bangalore, Karnataka – 560001<br>
+          📞 <a href="tel:+919080879223">+91 90808 79223</a><br>
+          📧 <a href="mailto:enquiry@photobooths.in">enquiry@photobooths.in</a><br>
+          🌐 <a href="https://www.photobooths.in" target="_blank">www.photobooths.in</a></p>
+      </div>
+    </div>
+  </div>
+  <script>
+    function showSection(section) {
+      const ids = ['home-section', 'about-section', 'services-section', 'contact-section'];
+      ids.forEach(id => document.getElementById(id).style.display = 'none');
+      document.getElementById(section + '-section').style.display = 'block';
+      document.querySelectorAll('.navbar .nav-links button').forEach(btn => btn.classList.remove('active'));
+      if (section === 'home') {
+        document.querySelector('.navbar .nav-links button[onclick*="home"]').classList.add('active');
+      } else if (section === 'about') {
+        document.querySelector('.navbar .nav-links button[onclick*="about"]').classList.add('active');
+      } else if (section === 'services') {
+        document.querySelector('.navbar .nav-links button[onclick*="services"]').classList.add('active');
+      } else if (section === 'contact') {
+        document.querySelector('.navbar .nav-links button[onclick*="contact"]').classList.add('active');
+      }
+      // If on mobile, close menu after click
+      if (window.innerWidth <= 700) {
+        document.querySelector('.navbar .nav-links').classList.remove('open');
+      }
+    }
+    function toggleMenu() {
+      document.querySelector('.navbar .nav-links').classList.toggle('open');
+    }
+    // Optional: Close menu on resize if desktop
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 700) {
+        document.querySelector('.navbar .nav-links').classList.remove('open');
+      }
+    });
+  </script>
+</body>
+
+</html>
