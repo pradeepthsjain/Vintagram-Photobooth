@@ -33,6 +33,7 @@
       top: 0;
       z-index: 10;
       position: relative;
+      justify-content: flex-start;
     }
 
     .navbar .brand {
@@ -53,7 +54,14 @@
       font-size: 1.7rem;
       color: #2563eb;
       cursor: pointer;
-      margin-left: auto;
+      margin-left: 0;
+      margin-right: 0;
+      position: static;
+      right: auto;
+      left: auto;
+      top: auto;
+      transform: none;
+      z-index: 101;
     }
 
     .navbar .nav-links {
@@ -169,18 +177,25 @@
         padding: 0 8px;
         height: auto;
         min-height: 56px;
+        justify-content: flex-start;
       }
 
       .navbar .brand {
         font-size: 1.1rem;
         padding: 12px 0;
         gap: 8px;
+        flex: 0 0 auto;
       }
 
       .navbar .menu-toggle {
         display: block;
+        position: static;
         margin-left: 0;
-        margin-right: 0;
+        margin-right: 12px;
+        right: auto;
+        left: auto;
+        top: auto;
+        transform: none;
       }
 
       .navbar .nav-links {
@@ -236,8 +251,8 @@
 
 <body>
   <div class="navbar">
-    <div class="brand">Vintagram Photobooth</div>
     <button class="menu-toggle" aria-label="Toggle menu" onclick="toggleMenu()">&#9776;</button>
+    <div class="brand">Vintagram Photobooth</div>
     <div class="nav-links">
       <button onclick="showSection('home')" class="active">Home</button>
       <button onclick="showSection('about')">About</button>
